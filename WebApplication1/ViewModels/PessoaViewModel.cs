@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace WebApplication1.Models
 {
@@ -31,10 +28,8 @@ namespace WebApplication1.Models
         public string Telefone { get; set; }
 
         [Required]
-        [MaxLength(100)]
-        public string NomeMae { get; set; }
-
-        [Required]
         public string Captcha { get; set; }
+
+        public bool Ativo { get; set; }
     }
 }

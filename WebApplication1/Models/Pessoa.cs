@@ -21,8 +21,6 @@ namespace WebApplication1.Models
         
         public string Email { get; set; }
         
-        public string Telefone { get; set; }
-        
-        public string NomeMae { get; set; }
+        public string Telefone { get; set; }       
     }
 }

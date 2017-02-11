@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -185,6 +186,10 @@
     <Compile Include="Migrations\201610122119007_ModelToViewModel.Designer.cs">
       <DependentUpon>201610122119007_ModelToViewModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702112008327_teste.cs" />
+    <Compile Include="Migrations\201702112008327_teste.Designer.cs">
+      <DependentUpon>201702112008327_teste.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -247,9 +252,11 @@
     <Content Include="Views\Pessoa\Create.cshtml" />
     <Content Include="Views\Pessoa\List.cshtml" />
     <Content Include="Views\CarrinhoCompras\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Shared\DisplayTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -267,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610122119007_ModelToViewModel.resx">
       <DependentUpon>201610122119007_ModelToViewModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702112008327_teste.resx">
+      <DependentUpon>201702112008327_teste.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

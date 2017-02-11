@@ -49,9 +49,10 @@
                 @Html.LabelFor(m => Model.Telefone)
                 @Html.TextBoxFor(m => Model.Telefone, new { @class = "form-control" })
             </div>
+
             <div class="form-group">
-                @Html.LabelFor(m => Model.NomeMae)
-                @Html.TextBoxFor(m => Model.NomeMae, new { @class = "form-control" })
+                @Html.LabelFor(m => Model.Ativo)
+                @Html.EditorFor(m => Model.Ativo,new { @class="form-control"})
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => Model.Captcha)
