@@ -1,8 +1,6 @@
-﻿using Service.Impl;
+﻿using AutoMapper;
+using Service.Impl;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
 
@@ -25,9 +23,18 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(PessoaViewModel model)
+        public ActionResult Create(PessoaViewModel model, FormCollection formCollection)
         {
             ModelState.Remove("Codigo");
+
+            var dia = Convert.ToInt32(formCollection["DataNascimento.days"]);
+            var mes = Convert.ToInt32(formCollection["DataNascimento.months"]);
+            var ano = Convert.ToInt32(formCollection["DataNascimento.years"]);
+
+            DateTime data = new DateTime(ano, mes, dia);
+            model.DataNascimento = data;
+
+            ModelState["DataNascimento"].Errors.Clear();
 
             if (ModelState.IsValid)
             {
@@ -52,7 +59,7 @@ namespace WebApplication1.Controllers
                     //AutoMapper.Mapper.CreateMap<PessoaViewModel, Pessoa>();
 
                     //Transformar um objeto em outro
-                    var p = AutoMapper.Mapper.Map<PessoaViewModel, Pessoa>(model);
+                    var p = Mapper.Map<PessoaViewModel, Pessoa>(model);
 
                     PessoaService srv = new PessoaService();
                     srv.Salvar(p);
@@ -78,18 +85,19 @@ namespace WebApplication1.Controllers
 
             //MODO EASY
             //AutoMapper.Mapper.CreateMap<Pessoa, PessoaViewModel>();
-            var pVM = AutoMapper.Mapper.Map<Pessoa, PessoaViewModel>(p);
+            var pVM = Mapper.Map<Pessoa, PessoaViewModel>(p);
 
             return View("Create", pVM);
         }
 
         [HttpPost]
-        public ActionResult Edit(Pessoa model)
+        public ActionResult Edit(PessoaViewModel model)
         {
             if (ModelState.IsValid)
             {
+                var pessoa = Mapper.Map<PessoaViewModel, Pessoa>(model);
                 PessoaService srv = new PessoaService();
-                srv.Salvar(model);
+                srv.Salvar(pessoa);
 
                 return View("List", srv.Listar());
             }
